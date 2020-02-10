@@ -1,0 +1,63 @@
+01 - Deep Learning or Neural Networks 	397
+02 - Large Scale Learning and Big Data 	74
+03 - Convex Optimization 	96
+04 - Clustering 	79
+05 - Learning Theory 	99
+06 - Graphical Models 	65
+07 - Online Learning 	51
+08 - Sparsity and Feature Selection 	89
+09 - Reinforcement Learning Algorithms 	77
+10 - Kernel Methods 	41
+11 - Matrix Factorization 	52
+12 - Bandit Algorithms 	56
+13 - Component Analysis (ICA,PCA,CCA, FLDA) 	36
+14 - Stochastic Methods 	17
+15 - Gaussian Processes 	38
+16 - MCMC 	29
+17 - Nonlinear Dimension Reduction and Manifold Learning 	20
+18 - Time Series Analysis 	34
+19 - Model Selection and Structure Learning 	17
+20 - Multi-task and Transfer Learning 	36
+21 - Bayesian Nonparametrics 	26
+22 - Spectral Methods 	23
+23 - Variational Inference 	27
+24 - Combinatorial Optimization 	33
+25 - Semi-Supervised Learning 	29
+26 - Structured Prediction 	16
+27 - Ensemble Methods and Boosting 	17
+28 - Graph-based Learning 	20
+29 - Active Learning 	22
+30 - Ranking and Preference Learning 	17
+31 - Similarity and Distance Learning 	24
+32 - Information Theory 	19
+33 - Game Theory and Econometrics 	16
+34 - Regularization and Large Margin Methods 	13
+35 - Causality 	26
+36 - (Cognitive/Neuroscience) Perception 	15
+37 - (Cognitive/Neuroscience) Neural Coding 	26
+38 - (Cognitive/Neuroscience) Theoretical Neuroscience 	29
+39 - (Cognitive/Neuroscience) Reinforcement Learning 	5
+40 - (Cognitive/Neuroscience) Language 	2
+41 - (Application) Object and Pattern Recognition 	28
+42 - (Application) Computer Vision 	120
+43 - (Application) Natural Language and Text Processing 	28
+44 - (Application) Signal and Speech Processing 	18
+45 - (Application) Social Networks 	19
+46 - (Application) Information Retrieval 	12
+47 - (Application) Web Applications and Internet Data 	7
+48 - (Application) Collaborative Filtering and Recommender Systems 	19
+49 - (Application) Privacy, Anonymity, and Security 	16
+50 - (Application) Bioinformatics and Systems Biology 	15
+51 - (Other) Classification 	31
+52 - (Other) Regression 	13
+53 - (Other) Optimization 	51
+54 - (Other) Probabilistic Models and Methods 	32
+55 - (Other) Machine Learning Topics 	30
+56 - (Other) Unsupervised Learning Methods 	29
+57 - (Other) Applications 	30
+58 - (Other) Cognitive Science 	16
+59 - (Other) Bayesian Inference 	20
+60 - (Other) Neuroscience 	42
+61 - (Other) Statistics 	24
+62 - (Other) Robotics and Control 	18
+
