@@ -48,15 +48,15 @@ def kmeans(data, num_clusters):
         Implements k-means algorithm
         Reference https://towardsdatascience.com/k-means-clustering-with-scikit-learn-6b47a369a83c
     """
-    km = KMeans(n_clusters= num_clusters, init='random',  n_init= 1, max_iter= 300, 
-        tol=1e-04, random_state=0)
+    km = KMeans(n_clusters= num_clusters,  n_init= 1, max_iter= 300, 
+        tol=1e-04, random_state= 0)
     cluster_labels_km = km.fit_predict(data)
 
     cost = km.inertia_/data.shape[0]
 
     return km.cluster_centers_, cluster_labels_km, cost
 
-def plot(data, cluster_centers, cluster_labels):
+def plot(data, cluster_centers, cluster_labels, loc= 'center right'):
     num_clusters = cluster_centers.shape[0]
     rng = np.random.RandomState(0)
     cycol = cycle('bgrcm')
@@ -70,7 +70,7 @@ def plot(data, cluster_centers, cluster_labels):
     plt.scatter(cluster_centers[:, 0], cluster_centers[:, 1], marker='*', c='k', s= msize)
     plt.rc('axes', axisbelow=True)
     plt.grid(True)
-    plt.legend(loc= 'center right')
+    plt.legend(loc= loc)
     plt.xlabel('x')
     plt.ylabel('y')
 
