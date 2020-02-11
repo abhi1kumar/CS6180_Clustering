@@ -4,7 +4,6 @@ import os, sys
 sys.path.append(os.getcwd())
 
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 
 from util import *
@@ -40,8 +39,7 @@ def run_k_center_k_means(data, num_clusters= 3):
 # Execution starts here
 #===============================================================================
 # Read the data from csv
-# The zeroth column should be used as index
-data = pd.read_csv("input/data1.csv", index_col= 0).to_numpy()
+data = readcsv_to_numpy("input/data1.csv")
 
 run_k_center_k_means(data, num_clusters= 3)
 run_k_center_k_means(data, num_clusters= 4)

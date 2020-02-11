@@ -1,6 +1,7 @@
 
 
 import numpy as np
+import pandas as pd
 from scipy.spatial.distance import cdist as dist
 from sklearn.cluster import KMeans
 
@@ -11,6 +12,13 @@ from itertools import cycle
 msize = 100
 fs    = 15
 matplotlib.rcParams.update({'font.size': fs})
+
+def readcsv_to_numpy(path):
+    """
+        Read the data from csv
+        The zeroth column should be used as index
+    """
+    return pd.read_csv(path, index_col= 0).to_numpy()
 
 def kcenter(data, num_clusters= 2, metric= "euclidean"):
     """
