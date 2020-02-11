@@ -59,7 +59,7 @@ def kmeans(data, num_clusters):
 def plot(data, cluster_centers, cluster_labels, loc= 'center right'):
     num_clusters = cluster_centers.shape[0]
     rng = np.random.RandomState(0)
-    cycol = cycle('bgrcm')
+    cycol = cycle('bgrcmy')
     
     # Plot all the points with a different color
     for i in range(num_clusters):
