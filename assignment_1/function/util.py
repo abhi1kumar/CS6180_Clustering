@@ -64,7 +64,7 @@ def kmeans(data, num_clusters):
 
     return km.cluster_centers_, cluster_labels_km, cost
 
-def plot(data, cluster_centers, cluster_labels, loc= 'center right'):
+def plot(data, cluster_centers, cluster_labels, loc= 'center right', show_centers= True):
     num_clusters = cluster_centers.shape[0]
     rng = np.random.RandomState(0)
     cycol = cycle('bgrcmy')
@@ -75,7 +75,8 @@ def plot(data, cluster_centers, cluster_labels, loc= 'center right'):
         plt.scatter(data[pts_index, 0], data[pts_index, 1], c=next(cycol), s= msize//6, label=  "Cluster " + str(i))
 
     # Finally plot all the cluster centers with black
-    plt.scatter(cluster_centers[:, 0], cluster_centers[:, 1], marker='*', c='k', s= msize)
+    if show_centers:
+        plt.scatter(cluster_centers[:, 0], cluster_centers[:, 1], marker='*', c='k', s= msize)
     plt.rc('axes', axisbelow=True)
     plt.grid(True)
     plt.legend(loc= loc)

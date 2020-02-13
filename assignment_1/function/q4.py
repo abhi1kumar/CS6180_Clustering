@@ -71,21 +71,9 @@ def get_closest_nodes(nodes_dict, data):
 
 #===============================================================================
 # Execution starts here
-#===============================================================================                    
-#"""
+#===============================================================================
 data = readcsv_to_numpy("input/data2.csv")
-"""
-data = np.array([[1,2],
-    [2,2],
-    [3,4],
-    [4,4],
-    [5,6],
-    [6,6],
-    [7,8],
-    [8,8],
-    [9,10],
-    [10,10],])
-"""
+# data = np.array([[1,2],[2,2],[3,4],[4,4],[5,6],[6,6],[7,8],[8,8],[9,10],[10,10]])
 
 N = data.shape[0]
 
@@ -126,10 +114,22 @@ while len(nodes_dict) > 1:
     # Add the new node to the nodes_dict
     nodes_dict[cluster_cnt] = new_indices
 
-    if cluster_cnt%100 == 0:
+    curr_num_clusters = len(nodes_dict)
+
+    if cluster_cnt%100 == 0 or curr_num_clusters == 1:
         print("{} clusters done...".format(cluster_cnt))
 
-print("{} clusters done...".format(cluster_cnt))
+    # Plot and save scatter when curr_num_clusters < 5
+    if curr_num_clusters < 5 and curr_num_clusters > 1:
+        cluster_labels = np.zeros((N, ), dtype= np.uint8)
+        for i in range(curr_num_clusters):
+            indices = get_value(nodes_dict, i)
+            cluster_labels[indices] = i
+
+        fig= plt.figure(dpi= DPI, figsize= (8, 8))        
+        plot(data, np.zeros((curr_num_clusters,)), cluster_labels, loc= "upper right", show_centers= False)
+        plt.title('HAC k= ' + str(curr_num_clusters))
+        savefig(plt, "output/q4_k_" + str(curr_num_clusters) + ".png")
 
 # Convert linkage to a numpy array
 linkage = np.array(linkage)
