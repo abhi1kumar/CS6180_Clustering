@@ -23,15 +23,21 @@ print(data.shape)
 
 print("Doing PCA...")
 data_trans = get_pca(data, n_components= num_dimensions)
+data_trans_2 = get_inbuilt_pca(data, n_components= num_dimensions)
+
 print("Running k-means with k= {}...".format(k))
 cluster_centers_km, cluster_labels_km, _ = kmeans (data_trans , num_clusters= k)
 
-fig= plt.figure(dpi= params.DPI, figsize= params.size)
-plt.subplot(1,2,1)
+fig= plt.figure(dpi= params.DPI, figsize= (24, 8))
+plt.subplot(1,3,1)
 plot_scatter(data_trans  , labels           , loc= 'upper center', cluster_names_list= cluster_names)
 plt.title('PCA with Centering (Color by species)')
 
-plt.subplot(1,2,2)
+plt.subplot(1,3,2)
+plot_scatter(data_trans_2 , labels           , loc= 'upper center', cluster_names_list= cluster_names)
+plt.title('Scipy PCA (Color by species)')
+
+plt.subplot(1,3,3)
 plot_scatter(data_trans  , cluster_labels_km, loc= 'upper center', show_centers= True, cluster_centers= cluster_centers_km)
 plt.title('k-Means (Color by cluster)')
 
