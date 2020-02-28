@@ -5,12 +5,9 @@ sys.path.append(os.getcwd())
 
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.datasets import load_iris
-from sklearn.decomposition import PCA
 
 from library import *
 from util import *
-
 import params
 
 num_dimensions = 2
@@ -23,11 +20,6 @@ data          = data_full.data
 labels        = data_full.target
 cluster_names = list(data_full.target_names)
 print(data.shape)
-
-# Inbuilt function
-# https://towardsdatascience.com/pca-using-python-scikit-learn-e653f8989e60
-#pca_obj = PCA(n_components= num_dimensions)
-#data_trans = pca_obj.fit_transform(data)
 
 print("Doing PCA...")
 data_trans = get_pca(data, n_components= num_dimensions)
