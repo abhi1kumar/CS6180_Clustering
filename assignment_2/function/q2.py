@@ -23,7 +23,7 @@ data_trans = get_MDS(data, n_components= num_dimensions, metric= "euclidean")
 print("Running k-means with k= {}...".format(k))
 cluster_centers_km, cluster_labels_km, _ = kmeans (data_trans , num_clusters= k)
 
-fig= plt.figure(dpi= params.DPI, figsize= (24, 12))
+fig= plt.figure(dpi= params.DPI, figsize= (24, 16))
 plt.subplot(2,3,1)
 plot_scatter(data_trans  , labels           , loc= 'upper center', cluster_names_list= cluster_names)
 plt.title('MDS Euclidean (Color by species)')
