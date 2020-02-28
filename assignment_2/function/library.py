@@ -1,10 +1,15 @@
 
 
+"""
+    Libraries consisting of commonly used functions
+"""
 import numpy as np
 from numpy import linalg as LA
 from sklearn.cluster import KMeans
+from sklearn.manifold import TSNE
+from scipy.spatial.distance import cdist as dist
 
-def get_pca(data, n_components= 2, center_data= True):
+def get_pca(data, n_components= 2, center_data= True, scaling= True):
     """
         Computes the PCA of the data
         data = numpy array of shape N x D
@@ -27,17 +32,32 @@ def get_pca(data, n_components= 2, center_data= True):
     w, v = LA.eig(covariance)
 
     # Order the eigenvalues and corresponding eigenvectors in descending order
-    order = np.argsort(-w)
+    # of absolute value of eigenvalues
+    order = np.argsort(-np.abs(w))
     v = v[:, order]
+    w = w[order]
 
     # THIS is sometimes needed since we need to match the function exactly.
     # Remember that if v is an eigen value, -v is also an eigen value.    
     v[:, 1] = -v[:, 1]
 
     # Transform data
-    data_transformed = np.dot(data, v)
+    # w is a 1-D array. Make its copies first and then do elementwise multiplication
+    # to get the new basis
+    w_array = np.repeat(w[np.newaxis, :], v.shape[0], 0)
+    if scaling:
+        new_basis = np.multiply(np.sqrt(w_array), v)
+    else:
+        new_basis = v
 
-    return data_transformed[:, 0:n_components]
+    data_transformed = np.dot(data, new_basis)
+
+    # Dim reduced data
+    data_reduced = data_transformed[:, 0:n_components]
+
+    # Return the real components. Data can become complex because of complex 
+    # eigenvectors
+    return np.real(data_reduced)
 
 def kmeans(data, num_clusters):
     """
@@ -51,3 +71,27 @@ def kmeans(data, num_clusters):
     cost = km.inertia_/data.shape[0]
 
     return km.cluster_centers_, cluster_labels_km, cost
+
+def get_MDS(data, n_components= 2, metric= "euclidean"):
+    """
+        Calculates the Multi-Dimensional Scaling algorithm using different
+        distances
+    """
+    # Compute the distance between every pair of points    
+    dist_mat = dist(data, data, metric= metric) # N x N
+
+    # Calculate the matrix H
+    N = data.shape[0]
+    H = np.eye(N) - np.ones((N, N))/N
+
+    # Apply double centering
+    S = -0.5 * np.dot(np.dot(H, np.power(dist_mat, 2)), H)
+
+    # Get PCA
+    return get_pca(S, n_components= n_components, center_data= False)
+
+def get_TSNE(data, n_components= 2):
+    tsne = TSNE(n_components= n_components, verbose=1, perplexity= 40, n_iter= 300)
+    data_reduced = tsne.fit_transform(data)
+
+    return data_reduced

@@ -1,13 +1,17 @@
 
 
+"""
+    Common utilities - plotting and helper functions
+"""
 import numpy as np
 import pandas as pd
 
 import matplotlib
 import matplotlib.pyplot as plt
 from itertools import cycle
+from sklearn.datasets import load_iris
 
-import params
+import function.params as params
 
 def plot_scatter(data, cluster_labels, loc= 'center right', show_centers= False,  cluster_centers= None, cluster_names_list= None):
     if show_centers:
@@ -51,3 +55,12 @@ def savefig(plt, path, show_message= True, tight_flag= True, newline= False):
         plt.savefig(path)
     if newline:
         print("")
+
+def get_iris():
+    data_full     = load_iris()
+    data          = data_full.data
+    labels        = data_full.target
+    cluster_names = list(data_full.target_names)
+    print(data.shape)
+
+    return data, labels, cluster_names
