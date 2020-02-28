@@ -24,6 +24,8 @@ labels        = data_full.target
 cluster_names = list(data_full.target_names)
 print(data.shape)
 
+# Inbuilt function
+# https://towardsdatascience.com/pca-using-python-scikit-learn-e653f8989e60
 #pca_obj = PCA(n_components= num_dimensions)
 #data_trans = pca_obj.fit_transform(data)
 
