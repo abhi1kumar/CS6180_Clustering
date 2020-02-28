@@ -6,10 +6,11 @@
 import numpy as np
 from numpy import linalg as LA
 from sklearn.cluster import KMeans
+from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 from scipy.spatial.distance import cdist as dist
 
-def get_pca(data, n_components= 2, center_data= True, scaling= True):
+def get_pca(data, n_components= 2, center_data= True, scaling= False):
     """
         Computes the PCA of the data
         data = numpy array of shape N x D
@@ -58,6 +59,17 @@ def get_pca(data, n_components= 2, center_data= True, scaling= True):
     # Return the real components. Data can become complex because of complex 
     # eigenvectors
     return np.real(data_reduced)
+
+def get_inbuilt_pca(data, n_components= 2):
+    """
+        Inbuilt function
+        Reference 
+        https://towardsdatascience.com/pca-using-python-scikit-learn-e653f8989e60
+    """
+    pca_obj = PCA(n_components= n_components,  svd_solver= 'full')
+    data_reduced = pca_obj.fit_transform(data)
+
+    return data_reduced
 
 def kmeans(data, num_clusters):
     """

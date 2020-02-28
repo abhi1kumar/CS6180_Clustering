@@ -3,7 +3,6 @@ sys.path.append(os.getcwd())
 
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.decomposition import PCA
 
 from function.library import *
 from function.util import *
@@ -16,13 +15,9 @@ k = 2
 #===============================================================================
 data, labels, cluster_names = get_iris()
 
-data_trans = get_pca(data, n_components= num_dimensions)
+data_trans   = get_pca(data, n_components= num_dimensions, scaling= True)
 data_trans_2 = get_pca(data, n_components= num_dimensions, scaling= False)
-
-# Inbuilt function
-# https://towardsdatascience.com/pca-using-python-scikit-learn-e653f8989e60
-pca_obj = PCA(n_components= num_dimensions,  svd_solver= 'full')
-data_trans_3 = pca_obj.fit_transform(data)
+data_trans_3 = get_inbuilt_pca(data, n_components= num_dimensions)
 
 fig= plt.figure(dpi= params.DPI, figsize= (18,6))
 plt.subplot(1,3,1)
